@@ -4,13 +4,13 @@ class Account
 
     public function __construct()
     { }
-    public function register()
+    public function register($un, $fn, $ln, $em, $em2, $pw, $pw2)
     {
-        $this->validateUsername($username);
-        $this->validateFirstname($firstname);
-        $this->validateLastname($lastname);
-        $this->validateEmails($email, $email2);
-        $this->validatePasswords($password, $password2);
+        $this->validateUsername($un);
+        $this->validateFirstname($fn);
+        $this->validateLastname($ln);
+        $this->validateEmails($em, $em2);
+        $this->validatePasswords($pw, $pw2);
     }
     // Form Validation
 
