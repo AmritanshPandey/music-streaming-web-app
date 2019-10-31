@@ -1,49 +1,10 @@
 <?php
-// Form Sanitization
+    include("includes/classes/Account.php");
+    $account = new Account();
+    $account->register();
 
-// username sanitization function
-function sanitizeFormUsername($inputText)
-{
-    $inputText = strip_tags($inputText);
-    $inputText = str_replace(" ", "", $inputText);
-    return $inputText;
-}
-
-// string sanitization function
-function sanitizeFormString($inputText)
-{
-    $inputText = strip_tags($inputText);
-    $inputText = strip_replace(" ", "", $inputText);
-    $inputText = ucfirst(strtolower($inputText));
-    return $inputText;
-}
-
-// password sanitization function
-function sanitizeFormPassword($inputText)
-{
-    $inputText = strip_tags($inputText);
-    return $inputText;
-}
-
-if (isset($_POST['loginButton'])) {
-    //Login Button Was Pressed
-
-}
-
-if (isset($_POST['registerButton'])) {
-    //Register Button Was Pressed
-
-    // Register Form Sanitization 
-    $username = sanitizeFormUsername($_POST['username']);
-    $firstname = sanitizeFormString($_POST['firstname']);
-    $lastname = sanitizeFormString($_POST['lastname']);
-    $email = sanitizeFormString($_POST['email']);
-    $email2 = sanitizeFormString($_POST['email2']);
-    $password = sanitizeFormPassword($_POST['password']);
-    $password2 = sanitizeFormPassword($_POST['password2']);
-}
-
-
+    include("includes/handlers/register-handler.php");
+    include("includes/handlers/login-handler.php");
 ?>
 
 <html lang="en">
@@ -52,7 +13,7 @@ if (isset($_POST['registerButton'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Welcome to Slotify</title>
+    <title>Welcome to Alto</title>
 </head>
 
 <body>
