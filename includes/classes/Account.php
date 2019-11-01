@@ -19,7 +19,7 @@ class Account
         // Condition checking if the error array is empty
         if(empty($this->errorArray) ==true){
             //Insert into DB
-            return insertUserDetails($un, $fn, $ln, $em, $pw);
+            return $this->insertUserDetails($un, $fn, $ln, $em, $pw);
         }
         else{
             return false;  
