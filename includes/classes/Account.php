@@ -1,9 +1,11 @@
 <?php
 class Account
 {
+    private $con;
     private $errorArray;
-    public function __construct()
+    public function __construct($con)
     {
+        $this->con =$con;
         $this->errorArray = array();
     }
     public function register($un, $fn, $ln, $em, $em2, $pw, $pw2)
@@ -17,7 +19,7 @@ class Account
         // Condition checking if the error array is empty
         if(empty($this->errorArray) ==true){
             //Insert into DB
-            return true;
+            return insertUserDetails($un, $fn, $ln, $em, $pw);
         }
         else{
             return false;  
@@ -30,6 +32,17 @@ class Account
             $error = "";
         }
         return "<span class='errorMessage'>$error</span>";
+    }
+
+
+    private function insertUserDetails($un, $fn, $ln, $em, $pw){
+        $encryptedPw = md5($pw); //Password is encrypted
+        $profilePic = "assets/images/profile-pics/pf.png";
+        $date = date("Y-m-d");
+
+        $result = mysqli_query($this->con, "INSERT INTO users VALUES ('', '$un', '$fn', '$ln', '$em', '$encryptedPw', '$date', '$profilePic')");
+
+        return $result;
     }
     // Form Validation
 
