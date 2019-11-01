@@ -20,8 +20,16 @@ class Account
             return true;
         }
         else{
-            return false;
+            return false;  
         }
+    }
+
+    // Function to check if the error message passed exists in errorArray
+    public function getError($error){
+        if(!in_array($error, $this->errorArray)){
+            $error = "";
+        }
+        return "<span class='errorMessage'>$error</span>";
     }
     // Form Validation
 

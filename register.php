@@ -1,9 +1,9 @@
 <?php
-    include("includes/classes/Account.php");
-    $account = new Account();
+include("includes/classes/Account.php");
+$account = new Account();
 
-    include("includes/handlers/register-handler.php");
-    include("includes/handlers/login-handler.php");
+include("includes/handlers/register-handler.php");
+include("includes/handlers/login-handler.php");
 ?>
 
 <html lang="en">
@@ -35,20 +35,26 @@
             <form id="registerForm" action="register.php" method="POST">
                 <h2>Create your free Account</h2>
                 <p>
+                    <?php echo $account->getError("Your Username must be between 5 and 25 characters"); ?>
                     <label for="username">Username: </label>
                     <input id="username" name="username" type="text" placeholder="Enter User Name" required>
                 </p>
 
                 <p>
+                    <?php echo $account->getError("Your First Name must be between 2 and 50 characters"); ?>
                     <label for="firstname">First Name: </label>
                     <input id="firstname" name="firstname" type="text" placeholder="Enter your First Name" required>
                 </p>
                 <p>
+                    <?php echo $account->getError("Your Last Name must be between 2 and 50 characters"); ?>
                     <label for="lastname">Last Name: </label>
                     <input id="lastname" name="lastname" type="text" placeholder="Enter your Last Name" required>
                 </p>
 
                 <p>
+                    <!--Outputting Error Message-->
+                    <?php echo $account->getError("Your Emails dont match"); ?>
+                    <?php echo $account->getError("Your Emails is invalid"); ?>
                     <label for="email">Email: </label>
                     <input id="email" name="email" type="email" placeholder="Enter your Email" required>
                 </p>
@@ -59,6 +65,10 @@
                 </p>
 
                 <p>
+                    <!--Outputting Error Message-->
+                    <?php echo $account->getError("Your Passwords dont match"); ?>
+                    <?php echo $account->getError("Your Password can only contain numbers and alphabet"); ?>
+                    <?php echo $account->getError("Your Password must be between 8 and 30 characters"); ?>
                     <label for="password">Password: </label>
                     <input id="password" name="password" type="password" placeholder="Enter Password" required>
                 </p>
