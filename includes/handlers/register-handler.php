@@ -37,8 +37,12 @@ if (isset($_POST['registerButton'])) {
     $password = sanitizeFormPassword($_POST['password']);
     $password2 = sanitizeFormPassword($_POST['password2']);
 
-    $account->register($username, $firstname, $lastname, $email, $email2, $password, $password2);
+    $wasSuccessful = $account->register($username, $firstname, $lastname, $email, $email2, $password, $password2);
 
+    // Condition to check if the registration was succesful to route to the home page
+    if($wasSuccessful == true){
+        header("Location: index.php");
+    }
 }
 
 
